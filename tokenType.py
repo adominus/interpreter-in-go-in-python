@@ -28,3 +28,11 @@ class TokenType(Enum):
 class Token:
     Type: TokenType
     Literal: str
+
+
+def lookup_identifier_token_type(identifier):
+    if identifier == "fn":
+        return TokenType.Function
+    elif identifier == "let":
+        return TokenType.Let
+    return TokenType.Identifier
