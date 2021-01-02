@@ -24,6 +24,18 @@ class Lexer:
             token = Token(TokenType.Comma, self.ch)
         elif self.ch == '+':
             token = Token(TokenType.Plus, self.ch)
+        elif self.ch == '-':
+            token = Token(TokenType.Minus, self.ch)
+        elif self.ch == '!':
+            token = Token(TokenType.Bang, self.ch)
+        elif self.ch == '*':
+            token = Token(TokenType.Asterisk, self.ch)
+        elif self.ch == '/':
+            token = Token(TokenType.Slash, self.ch)
+        elif self.ch == '<':
+            token = Token(TokenType.LT, self.ch)
+        elif self.ch == '>':
+            token = Token(TokenType.GT, self.ch)
         elif self.ch == '{':
             token = Token(TokenType.LeftBrace, self.ch)
         elif self.ch == '}':
