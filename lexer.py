@@ -13,7 +13,13 @@ class Lexer:
         self._skip_whitespace()
 
         if self.ch == '=':
-            token = Token(TokenType.Assign, self.ch)
+            if self._peek_char() == '=':
+                literal = self.ch
+                self._read_char()
+                literal += self.ch
+                token = Token(TokenType.EQ, literal)
+            else:
+                token = Token(TokenType.Assign, self.ch)
         elif self.ch == ';':
             token = Token(TokenType.Semicolon, self.ch)
         elif self.ch == '(':
@@ -27,7 +33,13 @@ class Lexer:
         elif self.ch == '-':
             token = Token(TokenType.Minus, self.ch)
         elif self.ch == '!':
-            token = Token(TokenType.Bang, self.ch)
+            if self._peek_char() == '=':
+                literal = self.ch
+                self._read_char()
+                literal += self.ch
+                token = Token(TokenType.NOT_EQ, literal)
+            else:
+                token = Token(TokenType.Bang, self.ch)
         elif self.ch == '*':
             token = Token(TokenType.Asterisk, self.ch)
         elif self.ch == '/':
@@ -59,13 +71,15 @@ class Lexer:
             self._read_char()
 
     def _read_char(self):
-        if self.readPosition >= len(self.input):
-            self.ch = "\0"
-        else:
-            self.ch = self.input[self.readPosition]
-
+        self.ch = self._peek_char()
         self.position = self.readPosition
         self.readPosition += 1
+
+    def _peek_char(self):
+        if self.readPosition >= len(self.input):
+            return "\0"
+        else:
+            return self.input[self.readPosition]
 
     def _read_identifier(self):
         starting_position = self.position

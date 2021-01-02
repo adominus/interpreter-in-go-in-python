@@ -16,24 +16,26 @@ class TokenType(Enum):
     Asterisk = 9,
     Slash = 10,
 
-    LT = 11,
-    GT = 12,
+    EQ = 11,
+    NOT_EQ = 12,
+    LT = 13,
+    GT = 14,
 
-    Comma = 13,
-    Semicolon = 14,
+    Comma = 15,
+    Semicolon = 16,
 
-    LeftParen = 15,
-    RightParen = 16,
-    LeftBrace = 17,
-    RightBrace = 18,
+    LeftParen = 17,
+    RightParen = 18,
+    LeftBrace = 19,
+    RightBrace = 20,
 
-    Function = 19,
-    Let = 20,
-    TrueKeyword = 21,
-    FalseKeyword = 22,
-    If = 23,
-    Else = 24,
-    Return = 25,
+    Function = 21,
+    Let = 22,
+    TrueKeyword = 23,
+    FalseKeyword = 24,
+    If = 25,
+    Else = 26,
+    Return = 27,
 
 
 @dataclass

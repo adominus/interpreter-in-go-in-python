@@ -21,7 +21,10 @@ class TestLexer(unittest.TestCase):
                 "return true;" \
                 "} else {" \
                 "return false;" \
-                "}"
+                "}" \
+                "" \
+                "10 == 10;" \
+                "10 != 9;"
 
         expected_tokens = [
             Token(TokenType.Let, "let"),
@@ -91,6 +94,15 @@ class TestLexer(unittest.TestCase):
             Token(TokenType.FalseKeyword, "false"),
             Token(TokenType.Semicolon, ";"),
             Token(TokenType.RightBrace, "}"),
+
+            Token(TokenType.Int, "10"),
+            Token(TokenType.EQ, "=="),
+            Token(TokenType.Int, "10"),
+            Token(TokenType.Semicolon, ";"),
+            Token(TokenType.Int, "10"),
+            Token(TokenType.NOT_EQ, "!="),
+            Token(TokenType.Int, "9"),
+            Token(TokenType.Semicolon, ";"),
         ]
 
         lexer = Lexer(input)
